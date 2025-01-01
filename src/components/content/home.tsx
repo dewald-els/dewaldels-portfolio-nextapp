@@ -9,6 +9,7 @@ import SectionAbout from "../sections/section-about";
 import { useTheme } from "@/lib/context/theme-context";
 import light_diamond_pattern from "../../assets/diamond_shape.png";
 import dark_diamond_pattern from "../../assets/diamond_shape-dark.png";
+import ScrollToTop from "../scroll-to-top/scroll-to-top";
 
 const HomeContent = () => {
   const contactSectionRef = useRef<HTMLDivElement>(null);
@@ -67,14 +68,11 @@ const HomeContent = () => {
           </div>
         </main>
       </div>
-      <div className="fixed right-4 bottom-24 z-50">
-        <button
-          className="nes-btn is-error scroll-btn flex justify-center items-center"
-          onClick={() => handleGoToSectionClick(PageSection.Start)}
-        >
-          <span className="rotate-90">&lt;</span>
-        </button>
-      </div>
+      <ScrollToTop
+        onClick={() => {
+          handleGoToSectionClick(PageSection.Start);
+        }}
+      />
       <Progress />
     </div>
   );

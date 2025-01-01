@@ -1,0 +1,4 @@
+.scroll-btn {
+  animation: slideInUp;
+  animation-duration: 200ms;
+}

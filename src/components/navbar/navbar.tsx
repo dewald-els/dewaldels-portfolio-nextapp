@@ -1,49 +1,28 @@
+import useScrollPercentage from "@/app/hooks/useScrollPercentage";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const IMAGES = [
   "/computer/computer_animated_idle.gif",
   "/computer/computer_animated_typing.gif",
-  "/computer/computer_animated_screensaver.gif",
 ];
 
 const Navbar = () => {
-  const timeoutRef = useRef<NodeJS.Timeout>(null);
   const [currentImage, setCurrentImage] = useState(IMAGES[0]);
+  const currentImageRef = useRef<string>(IMAGES[0]);
+  const percentageRef = useRef<number>(0);
 
-  useEffect(() => {
-    timeoutRef.current = setTimeout(() => {
-      setCurrentImage(IMAGES[2]);
-    }, 3000);
-
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (window && !ticking) {
-        window.requestAnimationFrame(() => {
-          ticking = false;
-          if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
-          }
-          setCurrentImage(IMAGES[1]);
-        });
-
-        ticking = true;
-      }
-    };
-
-    const handleScrollEnd = () => {
+  const onScrollChanged = (percent: number) => {
+    if (percent === percentageRef.current) {
       setCurrentImage(IMAGES[0]);
-      timeoutRef.current = setTimeout(() => {
-        setCurrentImage(IMAGES[2]);
-      }, 3000);
-    };
+    } else {
+      percentageRef.current = percent;
+      currentImageRef.current = IMAGES[1];
+      setCurrentImage(IMAGES[1]);
+    }
+  };
 
-    document.addEventListener("scroll", handleScroll);
-    document.addEventListener("scrollend", handleScrollEnd);
-
-    return () => document.removeEventListener("scroll", handleScroll);
-  }, []);
+  useScrollPercentage(onScrollChanged, 125);
 
   return (
     <nav
