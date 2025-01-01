@@ -1,0 +1,7 @@
+.nes-container.is-rounded.with-title > .title {
+  margin-top: -2rem;
+}
+
+.nes-container {
+  background-color: var(--background);
+}

@@ -1,0 +1,4 @@
+.finish-bubble {
+  animation: slideInUp;
+  animation-duration: 200ms;
+}
