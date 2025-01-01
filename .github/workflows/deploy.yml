@@ -4,7 +4,7 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  build:
     name: Build and deploy portfolio
     runs-on: ubuntu-latest
     steps:
@@ -23,12 +23,35 @@ jobs:
           touch .env
           echo NEXT_PUBLIC_SANITY_PROJECT_ID=${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }} >> .env
           echo NEXT_PUBLIC_SANITY_DATASET=production >> .env
+          echo NEXT_PUBLIC_SANITY_PROJECT_ID=${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }} >> .env.local
+          echo NEXT_PUBLIC_SANITY_DATASET=production >> .env.local
           cat .env
 
       - name: npm install, npm build
         run: |
           npm ci
           npm run build --if-exists
+
+      - name: Copy static files
+        run: |
+          cp -R ./public ./.next/standalone/public
+          cp -R ./.next/static ./.next/standalone/.next/static
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: app
+          path: ./.next/standalone
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: app
 
       - name: "Deploy to Azure"
         uses: azure/webapps-deploy@v3
