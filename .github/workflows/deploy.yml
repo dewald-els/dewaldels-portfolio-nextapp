@@ -20,7 +20,7 @@ jobs:
 
       - name: npm install, npm build
         run: |
-          npm run ci
+          npm ci
           npm run build --if-exists
 
       - name: Setup .env and secrets
