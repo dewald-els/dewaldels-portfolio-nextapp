@@ -64,20 +64,20 @@ body {
 .nes-container.dialogue {
   animation: slideInUp;
   animation-duration: 200ms;
-  max-width: 720px;
-  max-height: 480px;
+  max-width: 820px;
+  max-height: calc(100vh - 64px);
 }
 .nes-container.dialogue > .title {
   margin-top: -2.5rem !important;
 }
 .nes-container.dialogue .dialogue-content-wrapper {
   overflow: hidden;
-  max-height: 480px;
+  max-height: calc(100vh - 128px);
 }
 .nes-container.dialogue .dialogue-content {
   overflow-y: scroll;
-  max-height: calc(480px - 52px);
-}
+  max-height: calc(100vh - 128px);
+  }
 
 @media screen and (max-width: 480px) {
   .nes-container.dialogue {
@@ -102,7 +102,7 @@ body {
   animation-duration: 200ms;
 }
 .nes-container.is-rounded, .nes-progress, .nes-btn {
-  border-image-repeat: repeat;
+  border-image-repeat: stretch;
 }
 .nes-container.is-rounded.with-title > .title {
   margin-top: -2rem;
