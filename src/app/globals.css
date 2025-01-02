@@ -1,7 +1,3 @@
-@import "./styles/animations.css";
-@import "./styles/nes-container.css";
-@import "./styles/finish-bubble.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -54,4 +50,67 @@ body {
 
 .portable-text p {
   margin-bottom: 1rem;
+}
+
+@keyframes slideInUp {
+  0% {
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.nes-container.dialogue {
+  animation: slideInUp;
+  animation-duration: 200ms;
+  max-width: 720px;
+  max-height: 480px;
+}
+.nes-container.dialogue > .title {
+  margin-top: -2.5rem !important;
+}
+.nes-container.dialogue .dialogue-content-wrapper {
+  overflow: hidden;
+  max-height: 480px;
+}
+.nes-container.dialogue .dialogue-content {
+  overflow-y: scroll;
+  max-height: calc(480px - 52px);
+}
+
+@media screen and (max-width: 480px) {
+  .nes-container.dialogue {
+    background-color: var(--background);
+    position: absolute;
+    bottom: 0;
+    max-height: 100vh;
+    margin-left: 4px !important;
+    margin-right: 4px !important;
+  }
+  .nes-container.dialogue .dialogue-content-wrapper {
+    max-height: calc(100vh - 128px);
+  }
+  .nes-container.dialogue .dialogue-content {
+    overflow-y: scroll;
+    max-height: calc(100vh - 128px);
+  }
+}
+
+.finish-bubble {
+  animation: slideInUp;
+  animation-duration: 200ms;
+}
+
+.nes-container.is-rounded.with-title > .title {
+  margin-top: -2rem;
+}
+
+.nes-container {
+  background-color: var(--background);
+}
+
+.scroll-btn {
+  animation: slideInUp;
+  animation-duration: 200ms;
 }

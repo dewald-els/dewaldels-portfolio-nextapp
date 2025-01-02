@@ -5,7 +5,6 @@ import ProjectTechStack from "./project-techstack";
 import ProjectDialogueDivider from "./project-dialogue-divider";
 import ProjectTrimableText from "./project-trimable-text";
 import ProjectDialogueCarousel from "./project-dialogue-carousel/project-dialogue-carousel";
-import "@/app/styles/dialogue.css";
 
 interface ProjectDiaogueProps {
   onDismiss: () => void;

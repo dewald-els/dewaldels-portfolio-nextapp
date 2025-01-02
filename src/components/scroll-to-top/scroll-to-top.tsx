@@ -1,6 +1,5 @@
 import useScrollPercentage from "@/app/hooks/useScrollPercentage";
 import { useState } from "react";
-import "@/app/styles/scroll-to-top.css";
 
 interface ScrollToTopProps {
   onClick: () => void;
