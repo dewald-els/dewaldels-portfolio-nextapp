@@ -101,7 +101,9 @@ body {
   animation: slideInUp;
   animation-duration: 200ms;
 }
-
+.nes-container.is-rouned, .nes-progress {
+  border-image-repeat: repeat;
+}
 .nes-container.is-rounded.with-title > .title {
   margin-top: -2rem;
 }
