@@ -33,4 +33,3 @@ const ScrollToTop = (props: ScrollToTopProps) => {
 
 export default ScrollToTop;
 
-//() => handleGoToSectionClick(PageSection.Start)

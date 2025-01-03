@@ -42,22 +42,22 @@ const ProjectList = (props: ProjectListProps) => {
             </div>
 
             <div
-              className="flex justify-between items-center mt-auto bottom-0 w-full left-0 px-4 pb-2"
+              className="flex flex-col justify-between gap-2 items-center mt-auto bottom-0 w-full left-0 px-4 pb-2"
               style={{
                 backgroundColor: "var(--background)",
               }}
             >
-              <button
-                className="nes-btn is-primary"
-                onClick={() => handleProjectClick(project)}
-              >
-                ?
-              </button>
               <div className="nes-badge">
                 <span className="is-warning text-xs">
                   {project.projectTags[0].title}
                 </span>
               </div>
+              <button
+                className="nes-btn is-primary"
+                onClick={() => handleProjectClick(project)}
+              >
+                Info ?
+              </button>
             </div>
           </li>
         ))}
