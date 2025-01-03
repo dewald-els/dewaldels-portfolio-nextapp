@@ -43,7 +43,7 @@ const SectionAbout = () => {
               My Skills
             </span>
 
-            <div className="flex flex-wrap gap-5 mb-6">
+            <div className="flex flex-wrap justify-center gap-5 mb-6">
               {about.skills.map((skill) => (
                 <div
                   className="nes-badge !m-0"
