@@ -25,9 +25,11 @@ const Progress = () => {
   useScrollPercentage(onPercentageChange, 1);
   const progressClass = getProgressClass(percentage);
 
+  console.log(percentage);
+
   return (
     <div className="fixed bottom-0 w-full left-0 right-0 p-4">
-      {percentage >= 100 && (
+      {percentage >= 99 && (
         <section className="message-list finish-bubble">
           <section className="message -left">
             <i className="nes-icon trophy is-large top-6 z-40"></i>
