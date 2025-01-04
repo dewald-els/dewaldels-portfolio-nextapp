@@ -25,8 +25,6 @@ const Progress = () => {
   useScrollPercentage(onPercentageChange, 1);
   const progressClass = getProgressClass(percentage);
 
-  console.log(percentage);
-
   return (
     <div className="fixed bottom-0 w-full left-0 right-0 p-4">
       {percentage >= 99 && (
